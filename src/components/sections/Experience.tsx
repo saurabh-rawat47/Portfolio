@@ -29,7 +29,7 @@ export default function Experience() {
               <article
                 key={i}
                 className={`reveal reveal-delay-${Math.min(i + 1, 4)} bg-surface border border-border rounded-xl p-6 glow-blue-hover transition-all duration-300`}
-                aria-label={`${exp.role} at ${exp.company}`}
+                // aria-label={`${exp.role} at ${exp.company}`}
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5 pb-4 border-b border-border">
@@ -48,9 +48,9 @@ export default function Experience() {
                     >
                       {exp.role}
                     </h4>
-                    <p className="text-text-secondary text-sm mt-0.5">
+                    {/* <p className="text-text-secondary text-sm mt-0.5">
                       {exp.company}
-                    </p>
+                    </p> */}
                   </div>
                   <div className="flex flex-col gap-1.5 text-[12px] font-mono text-text-muted sm:text-right shrink-0">
                     <span className="flex items-center gap-1.5 sm:justify-end">
