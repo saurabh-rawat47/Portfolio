@@ -164,7 +164,7 @@ export const PROJECTS: Project[] = [
 export const EXPERIENCE: Experience[] = [
   {
     role: "Backend Developer — Independent Projects",
-    // company: "Krishna Engineering College",
+    // : "Krishna Engineering College",
     type: "Project-Based Learning",
     period: "July 2025 – Jan 2026",
     location: "India",
