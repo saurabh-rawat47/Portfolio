@@ -40,24 +40,6 @@ export default function Contact() {
     subject: "",
     message: "",
   });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-
-    const subject = encodeURIComponent(formData.subject || "Portfolio Enquiry");
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-    );
-
-    window.location.href = `mailto:${PERSONAL.email}?subject=${subject}&body=${body}`;
-  };
-
   return (
     <section
       id="contact"
@@ -69,7 +51,7 @@ export default function Contact() {
         <div className="reveal">
           <SectionHeader
             eyebrow="Get In Touch"
-            title="Let's"
+            title="Let&apos;s"
             highlight="Connect"
           />
         </div>

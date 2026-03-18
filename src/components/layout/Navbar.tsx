@@ -7,13 +7,10 @@ import Button from "@/components/ui/Button";
 import { IconDownload, IconMenu, IconX } from "@/components/ui/Icons";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
   const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 20);
-
     // Active section detection
     const sections = NAV_LINKS.map((l) => l.href.replace("#", ""));
     for (const id of sections.reverse()) {
