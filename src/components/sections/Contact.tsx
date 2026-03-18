@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState} from "react";
 import { PERSONAL } from "@/lib/data";
 import SectionHeader from "@/components/ui/SectionHeader";
 import {
@@ -34,12 +34,6 @@ const socialLinks = [
 ];
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
   return (
     <section
       id="contact"
@@ -94,7 +88,7 @@ export default function Contact() {
             p-6 sm:p-7 w-full h-full max-w-xl">
 
               <h3 className="font-display text-lg font-semibold text-text-primary mb-5">
-                What I'm Looking For
+                What I&apos;m Looking For
               </h3>
 
               <ul className="space-y-2 text-sm text-text-secondary leading-relaxed">
