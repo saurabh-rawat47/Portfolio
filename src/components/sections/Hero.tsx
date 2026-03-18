@@ -1,31 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { PERSONAL } from "@/lib/data";
+import { useHeroAnimation } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import {
-  IconGithub,
-  IconLinkedin,
   IconDownload,
   IconArrowRight,
   IconMapPin,
 } from "@/components/ui/Icons";
 
 export default function Hero() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    // Staggered entrance animation
-    const el = headingRef.current;
-    if (!el) return;
-    el.style.opacity = "0";
-    el.style.transform = "translateY(16px)";
-    setTimeout(() => {
-      el.style.transition = "opacity 0.7s ease, transform 0.7s ease";
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }, 100);
-  }, []);
+  useHeroAnimation();
 
   return (
     <section
@@ -45,10 +30,11 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-        <div className="max-w-3xl">
+        <div className="max-w-2xl">
 
           {/* Availability badge */}
           <div
+            data-hero
             className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full border border-border bg-surface/60 backdrop-blur-sm"
             role="status"
             aria-label="Availability status"
@@ -61,7 +47,7 @@ export default function Hero() {
 
           {/* Heading */}
           <h1
-            ref={headingRef}
+            data-hero
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary leading-[1.1] tracking-tight mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
@@ -72,30 +58,23 @@ export default function Hero() {
 
           {/* Tagline */}
           <p
-            className="text-text-secondary text-lg md:text-xl leading-relaxed mb-4 max-w-2xl"
-            style={{ animationDelay: "0.2s" }}
+            data-hero
+            className="text-text-secondary text-lg leading-relaxed mb-5 max-w-xl"
           >
             {PERSONAL.tagline}
           </p>
 
-          {/* Meta info */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-10 font-mono text-xs text-text-muted">
-            <span className="flex items-center gap-1.5">
-              <IconMapPin size={13} />
-              {PERSONAL.location}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-1 h-1 rounded-full bg-text-muted" />
-              {PERSONAL.education.degree}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-1 h-1 rounded-full bg-text-muted" />
-              {PERSONAL.education.institution}
-            </span>
+          {/* Location */}
+          <div
+            data-hero
+            className="flex items-center gap-1.5 mb-10 font-mono text-xs text-text-muted"
+          >
+            <IconMapPin size={13} />
+            <span>{PERSONAL.location} · {PERSONAL.availability}</span>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-3 mb-12">
+          {/* CTA Buttons — 2 only */}
+          <div data-hero className="flex flex-wrap gap-3">
             <Button
               href="#projects"
               variant="primary"
@@ -116,58 +95,8 @@ export default function Hero() {
               <IconDownload size={16} />
               Download Resume
             </Button>
-            <Button
-              href="#contact"
-              variant="ghost"
-              size="lg"
-              onClick={() => {
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Contact Me
-            </Button>
           </div>
 
-          {/* Social links */}
-          <div className="flex items-center gap-4">
-            <span className="font-mono text-xs text-text-muted">Find me on</span>
-            <div className="h-px w-8 bg-border" />
-            <a
-              href={PERSONAL.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors group"
-              aria-label="GitHub profile"
-            >
-              <IconGithub size={18} />
-              <span className="font-mono text-xs group-hover:text-accent transition-colors">
-                GitHub
-              </span>
-            </a>
-            <a
-              href={PERSONAL.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors group"
-              aria-label="LinkedIn profile"
-            >
-              <IconLinkedin size={18} />
-              <span className="font-mono text-xs group-hover:text-accent transition-colors">
-                LinkedIn
-              </span>
-            </a>
-          </div>
-        </div>
-
-        {/* ATS-friendly hidden keywords */}
-        <div className="sr-only" aria-hidden="true">
-          Java Backend Developer, Spring Boot, Spring MVC, REST API, RESTful API,
-          MongoDB, MySQL, Hibernate, JPA, Spring Data, Spring Security,
-          Maven, Docker, Git, GitHub, Postman, IntelliJ IDEA,
-          Backend Development, API Development, Database Integration,
-          Authentication, CRUD Operations, Layered Architecture, MVC,
-          Entry Level Java Developer, Backend Internship India,
-          Java Developer Fresher, Spring Boot Developer
         </div>
       </div>
 

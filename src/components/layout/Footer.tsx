@@ -12,9 +12,6 @@ export default function Footer() {
             <p className="font-mono text-xs text-text-muted">
               © {year} {PERSONAL.name} · Java Backend Developer
             </p>
-            {/* <p className="font-mono text-xs text-text-muted mt-1">
-              Built with Next.js, TypeScript & Tailwind CSS
-            </p> */}
           </div>
           <div className="flex items-center gap-4">
             <a

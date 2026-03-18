@@ -102,17 +102,16 @@ export default function Resume() {
                   <IconDownload size={18} />
                   Download Resume
                 </Button>
-                <Button
+                <a
                   href={PERSONAL.resumeUrl}
-                  external
-                  variant="outline"
-                  size="lg"
-                  className="flex-1 justify-center"
-                  ariaLabel="View resume in browser"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View resume in browser"
+                  className="flex-1 inline-flex items-center justify-center gap-2.5 text-base font-medium rounded-lg px-6 py-3 border border-border text-text-primary hover:border-border-light hover:bg-surface-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <IconExternalLink size={15} />
                   View in Browser
-                </Button>
+                </a>
               </div>
 
               <p className="text-center font-mono text-[10px] text-text-muted mt-4">

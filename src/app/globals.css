@@ -56,20 +56,30 @@ body {
   border-radius: 4px;
 }
 
-/* ---- Scroll reveal utility ---- */
+/* ---- Scroll reveal ---- */
+/*
+ * IMPORTANT: .reveal does NOT set opacity:0 here.
+ * Initial hiding is done via JS in ScrollReveal.tsx so that
+ * if JS fails or animejs fails, content is always visible.
+ * The .active class is the CSS-only fallback.
+ */
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* CSS fallback class — added if animejs fails to load */
+.reveal.active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+/* Legacy fallback class */
+.reveal.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.reveal-delay-1 { transition-delay: 0.10s; }
+.reveal-delay-2 { transition-delay: 0.20s; }
+.reveal-delay-3 { transition-delay: 0.30s; }
+.reveal-delay-4 { transition-delay: 0.40s; }
 
 /* ---- Typography ---- */
 .font-display {
@@ -156,4 +166,21 @@ body {
 }
 .avail-dot {
   animation: availPulse 2.5s ease-in-out infinite;
+}
+
+/* ---- Card hover — subtle scale + shadow (no JS needed) ---- */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35),
+              0 0 0 1px rgba(37, 99, 235, 0.2);
+}
+
+/* ---- Performance hint for animated elements ---- */
+[data-hero],
+[data-card] {
+  will-change: opacity, transform;
 }

@@ -11,6 +11,7 @@ export interface Project {
   liveUrl?: string;
   badge: string;
   badgeColor: "blue" | "violet" | "emerald" | "amber";
+  apiEndpoints?: string[];
 }
 
 export interface Skill {
@@ -26,6 +27,7 @@ export interface SkillCategory {
 
 export interface Experience {
   role: string;
+  company: string;
   type: string;
   period: string;
   location: string;

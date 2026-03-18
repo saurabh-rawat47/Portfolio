@@ -101,6 +101,27 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </ul>
         </div>
 
+        {/* Sample API Endpoints — shown only for projects that have them */}
+        {project.apiEndpoints && project.apiEndpoints.length > 0 && (
+          <div>
+            <p className="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-3">
+              Sample API Endpoints
+            </p>
+            <div className="bg-background rounded-lg border border-border p-3 space-y-1.5">
+              {project.apiEndpoints.map((endpoint) => (
+                <p
+                  key={endpoint}
+                  className="font-mono text-[12px] text-text-secondary"
+                >
+                  <span className="text-accent">{endpoint.split(" ")[0]}</span>
+                  {" "}
+                  <span>{endpoint.split(" ").slice(1).join(" ")}</span>
+                </p>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Tech Stack */}
         <div className="mt-auto pt-4 border-t border-border">
           <p className="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-3">
